@@ -68,8 +68,10 @@ class ApiProblem
 
     /**
      * Normalized property names for overloading.
+     *
+     * @var array
      */
-    protected array $normalizedProperties = [
+    protected $normalizedProperties = [
         'type'   => 'type',
         'status' => 'status',
         'title'  => 'title',
@@ -78,8 +80,10 @@ class ApiProblem
 
     /**
      * Status titles for common problems.
+     *
+     * @var array
      */
-    protected array $problemStatusTitles = [
+    protected $problemStatusTitles = [
         // CLIENT ERROR
         400 => 'Bad Request',
         401 => 'Unauthorized',

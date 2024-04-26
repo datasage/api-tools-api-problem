@@ -34,15 +34,9 @@
     <MixedReturnStatement>
       <code><![CDATA[$this->problemStatusTitles[$this->status]]]></code>
     </MixedReturnStatement>
-    <PossiblyNullPropertyAssignmentValue>
-      <code>$title</code>
-    </PossiblyNullPropertyAssignmentValue>
     <RedundantCastGivenDocblockType>
       <code>(bool) $flag</code>
     </RedundantCastGivenDocblockType>
-    <RedundantConditionGivenDocblockType>
-      <code><![CDATA[null !== $this->title]]></code>
-    </RedundantConditionGivenDocblockType>
     <RiskyTruthyFalsyComparison>
       <code>$status</code>
     </RiskyTruthyFalsyComparison>
@@ -329,17 +323,6 @@
       <code>$content</code>
       <code>$content</code>
       <code>$content</code>
-      <code>$content</code>
-      <code>$content</code>
-      <code>$content</code>
-      <code>$content</code>
-      <code>$content</code>
-      <code>$content</code>
-      <code>$content</code>
-      <code>$content</code>
-      <code>$content</code>
-      <code>$content</code>
-      <code>$content</code>
       <code><![CDATA[$content['describedBy']]]></code>
       <code><![CDATA[$content['describedBy']]]></code>
       <code><![CDATA[$content['describedBy']]]></code>
@@ -348,22 +331,6 @@
       <code><![CDATA[$response->getContent()]]></code>
       <code><![CDATA[$response->getContent()]]></code>
     </MixedArgument>
-    <MixedArrayAccess>
-      <code><![CDATA[$content['describedBy']]]></code>
-      <code><![CDATA[$content['describedBy']]]></code>
-      <code><![CDATA[$content['describedBy']]]></code>
-      <code><![CDATA[$content['detail']]]></code>
-      <code><![CDATA[$content['detail']]]></code>
-      <code><![CDATA[$content['detail']]]></code>
-      <code><![CDATA[$content['details']]]></code>
-      <code><![CDATA[$content['details']]]></code>
-      <code><![CDATA[$content['status']]]></code>
-      <code><![CDATA[$content['status']]]></code>
-      <code><![CDATA[$content['status']]]></code>
-      <code><![CDATA[$content['title']]]></code>
-      <code><![CDATA[$content['title']]]></code>
-      <code><![CDATA[$content['title']]]></code>
-    </MixedArrayAccess>
     <MixedAssignment>
       <code>$content</code>
       <code>$content</code>
@@ -395,7 +362,6 @@
     <MixedArrayAccess>
       <code><![CDATA[$data['detail']]]></code>
       <code><![CDATA[$data['detail']]]></code>
-      <code><![CDATA[$data['trace']]]></code>
     </MixedArrayAccess>
     <MixedAssignment>
       <code>$data</code>
@@ -403,6 +369,10 @@
     </MixedAssignment>
   </file>
   <file src="test/ModuleTest.php">
+    <DeprecatedMethod>
+      <code>getMockForAbstractClass</code>
+      <code>returnCallback</code>
+    </DeprecatedMethod>
     <UndefinedMethod>
       <code>setSharedManager</code>
     </UndefinedMethod>
@@ -411,9 +381,6 @@
     <MixedArgument>
       <code>$test</code>
     </MixedArgument>
-    <MixedArrayAccess>
-      <code><![CDATA[$test['trace']]]></code>
-    </MixedArrayAccess>
     <MixedAssignment>
       <code>$test</code>
     </MixedAssignment>

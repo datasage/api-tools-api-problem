@@ -32,29 +32,39 @@ class ApiProblem
 
     /**
      * Additional details to include in report.
+     *
+     * @var array
      */
-    protected array $additionalDetails = [];
+    protected $additionalDetails = [];
 
     /**
      * URL describing the problem type; defaults to HTTP status codes.
+     *
+     * @var string
      */
-    protected string $type = 'http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html';
+    protected $type = 'http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html';
 
     /**
      * Description of the specific problem.
+     *
+     * @var string|Exception|Throwable
      */
-    protected string|Exception|Throwable $detail = '';
+    protected $detail = '';
 
     /**
      * Whether or not to include a stack trace and previous
      * exceptions when an exception is provided for the detail.
+     *
+     * @var bool
      */
-    protected bool $detailIncludesStackTrace = false;
+    protected $detailIncludesStackTrace = false;
 
     /**
      * HTTP status for the error.
+     *
+     * @var int
      */
-    protected int $status;
+    protected $status;
 
     /**
      * Normalized property names for overloading.
@@ -113,8 +123,10 @@ class ApiProblem
 
     /**
      * Title of the error.
+     *
+     * @var string|null
      */
-    protected ?string $title;
+    protected $title;
 
     /**
      * Create an instance using the provided information. If nothing is

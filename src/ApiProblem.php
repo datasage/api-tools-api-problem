@@ -210,8 +210,10 @@ class ApiProblem
 
     /**
      * Cast to an array.
+     *
+     * @return array
      */
-    public function toArray(): array
+    public function toArray()
     {
         $problem = [
             'type'   => $this->type,
@@ -228,8 +230,9 @@ class ApiProblem
      * stack trace and previous exception information.
      *
      * @param bool $flag
+     * @return ApiProblem
      */
-    public function setDetailIncludesStackTrace($flag): ApiProblem
+    public function setDetailIncludesStackTrace($flag)
     {
         $this->detailIncludesStackTrace = (bool) $flag;
 
@@ -241,8 +244,10 @@ class ApiProblem
      *
      * If an exception was provided, creates the detail message from it;
      * otherwise, detail as provided is used.
+     *
+     * @return string
      */
-    protected function getDetail(): string
+    protected function getDetail()
     {
         if ($this->detail instanceof Throwable || $this->detail instanceof Exception) {
             return $this->createDetailFromException();
@@ -276,8 +281,10 @@ class ApiProblem
      * string 'Unknown'.
      *
      * Otherwise, use the title provided.
+     *
+     * @return string
      */
-    protected function getTitle(): string
+    protected function getTitle()
     {
         if (null !== $this->title) {
             return $this->title;
@@ -300,8 +307,10 @@ class ApiProblem
 
     /**
      * Create detail message from an exception.
+     *
+     * @return string
      */
-    protected function createDetailFromException(): string
+    protected function createDetailFromException()
     {
         /** @var Exception|Throwable $e */
         $e = $this->detail;
@@ -332,8 +341,10 @@ class ApiProblem
 
     /**
      * Create HTTP status from an exception.
+     *
+     * @return int|string
      */
-    protected function createStatusFromException(): int|string
+    protected function createStatusFromException()
     {
         /** @var Exception|Throwable $e */
         $e      = $this->detail;

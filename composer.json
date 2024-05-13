@@ -43,6 +43,9 @@
         "phpspec/prophecy-phpunit": "^2.0",
         "phpunit/phpunit": "^10",
         "psalm/plugin-phpunit": "^0.18",
+        "symfony/console": "^6 || ^7",
+        "symfony/filesystem": "^6 || ^7",
+        "symfony/string": "^6 || ^7",
         "vimeo/psalm": "^5"
     },
     "autoload": {

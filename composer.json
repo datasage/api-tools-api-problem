@@ -33,11 +33,10 @@
         }
     },
     "require": {
-        "php": "~8.1.0 || ~8.2.0 || ~8.3.0",
+        "php": "~8.1.0 || ~8.2.0 || ~8.3.0 || ~8.4.0",
         "ext-json": "*",
         "laminas/laminas-eventmanager": "^3.12",
         "laminas/laminas-http": "^2.19",
-        "laminas/laminas-json": "^3.6",
         "laminas/laminas-mvc": "^3.7",
         "laminas/laminas-view": "^2.32"
     },

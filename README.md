@@ -1,6 +1,8 @@
 Laminas Api Problem
 ==============
 
+This fork is maintained for personal purposes. Use at your own risk.
+
 [![Build Status](https://github.com/laminas-api-tools/api-tools-api-problem/actions/workflows/continuous-integration.yml/badge.svg)](https://github.com/laminas-api-tools/api-tools-api-problem/actions/workflows/continuous-integration.yml)
 
 > ## 🇷🇺 Русским гражданам

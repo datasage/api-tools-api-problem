@@ -128,7 +128,7 @@ class ApiProblem
     /**
      * Title of the error.
      *
-     * @var string
+     * @var string|null
      */
     protected $title;
 
@@ -302,11 +302,7 @@ class ApiProblem
             return get_class($this->detail);
         }
 
-        if (null === $this->title) {
-            return 'Unknown';
-        }
-
-        return $this->title;
+        return 'Unknown';
     }
 
     /**

@@ -41,7 +41,6 @@
         "laminas/laminas-view": "^2.32"
     },
     "require-dev": {
-        "brick/varexporter": "0.5",
         "laminas/laminas-coding-standard": "^3",
         "phpspec/prophecy-phpunit": "^2.0",
         "phpunit/phpunit": "^10",

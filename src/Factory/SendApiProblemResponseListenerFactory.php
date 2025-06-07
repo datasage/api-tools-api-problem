@@ -13,7 +13,8 @@ class SendApiProblemResponseListenerFactory
     public function __invoke(ContainerInterface $container): SendApiProblemResponseListener
     {
         $config            = $container->get('config');
-        $displayExceptions = isset($config['view_manager']['display_exceptions']) && $config['view_manager']['display_exceptions'];
+        $displayExceptions = isset($config['view_manager']['display_exceptions']) &&
+            $config['view_manager']['display_exceptions'];
 
         $listener = new SendApiProblemResponseListener();
         $listener->setDisplayExceptions($displayExceptions);

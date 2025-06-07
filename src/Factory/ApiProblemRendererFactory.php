@@ -12,7 +12,8 @@ class ApiProblemRendererFactory
     public function __invoke(ContainerInterface $container): ApiProblemRenderer
     {
         $config            = $container->get('config');
-        $displayExceptions = isset($config['view_manager']['display_exceptions']) && $config['view_manager']['display_exceptions'];
+        $displayExceptions = isset($config['view_manager']['display_exceptions']) &&
+            $config['view_manager']['display_exceptions'];
 
         $renderer = new ApiProblemRenderer();
         $renderer->setDisplayExceptions($displayExceptions);

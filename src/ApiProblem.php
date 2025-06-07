@@ -131,8 +131,13 @@ class ApiProblem
      * if the status matches any known, the title field will be selected
      * from $problemStatusTitles as a result.
      */
-    public function __construct(int|string $status, string|Throwable $detail, ?string $type = null, ?string $title = null, array $additional = [])
-    {
+    public function __construct(
+        int|string $status,
+        string|Throwable $detail,
+        ?string $type = null,
+        ?string $title = null,
+        array $additional = []
+    ) {
         if ($detail instanceof ProblemExceptionInterface) {
             if (null === $type) {
                 $type = $detail->getType();

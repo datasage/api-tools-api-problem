@@ -8,22 +8,17 @@ use Laminas\ApiTools\ApiProblem\ApiProblemResponse;
 use Laminas\Http\Response as HttpResponse;
 use Laminas\Mvc\ResponseSender\HttpResponseSender;
 use Laminas\Mvc\ResponseSender\SendResponseEvent;
+use Override;
 
 /**
  * Send ApiProblem responses.
  */
 class SendApiProblemResponseListener extends HttpResponseSender
 {
-    /** @var HttpResponse; */
-    protected $applicationResponse;
+    protected ?HttpResponse $applicationResponse = null;
+    protected bool $displayExceptions            = false;
 
-    /** @var bool */
-    protected $displayExceptions = false;
-
-    /**
-     * @return self
-     */
-    public function setApplicationResponse(HttpResponse $response)
+    public function setApplicationResponse(HttpResponse $response): self
     {
         $this->applicationResponse = $response;
 
@@ -32,23 +27,18 @@ class SendApiProblemResponseListener extends HttpResponseSender
 
     /**
      * Set the flag determining whether exception stack traces are included.
-     *
-     * @param bool $flag
-     * @return self
      */
-    public function setDisplayExceptions($flag)
+    public function setDisplayExceptions(bool $flag): self
     {
-        $this->displayExceptions = (bool) $flag;
+        $this->displayExceptions = $flag;
 
         return $this;
     }
 
     /**
      * Are exception stack traces included in the response?
-     *
-     * @return bool
      */
-    public function displayExceptions()
+    public function displayExceptions(): bool
     {
         return $this->displayExceptions;
     }
@@ -58,18 +48,17 @@ class SendApiProblemResponseListener extends HttpResponseSender
      *
      * Sets the composed ApiProblem's flag for including the stack trace in the
      * detail based on the display exceptions flag, and then sends content.
-     *
-     * @return self
      */
-    public function sendContent(SendResponseEvent $e)
+    #[Override]
+    public function sendContent(SendResponseEvent $event): HttpResponseSender
     {
-        $response = $e->getResponse();
+        $response = $event->getResponse();
         if (! $response instanceof ApiProblemResponse) {
             return $this;
         }
         $response->getApiProblem()->setDetailIncludesStackTrace($this->displayExceptions());
 
-        return parent::sendContent($e);
+        return parent::sendContent($event);
     }
 
     /**
@@ -77,12 +66,11 @@ class SendApiProblemResponseListener extends HttpResponseSender
      *
      * If an application response is composed, and is an HTTP response, merges
      * its headers with the ApiProblemResponse headers prior to sending them.
-     *
-     * @return self
      */
-    public function sendHeaders(SendResponseEvent $e)
+    #[Override]
+    public function sendHeaders(SendResponseEvent $event): SendApiProblemResponseListener
     {
-        $response = $e->getResponse();
+        $response = $event->getResponse();
         if (! $response instanceof ApiProblemResponse) {
             return $this;
         }
@@ -91,15 +79,14 @@ class SendApiProblemResponseListener extends HttpResponseSender
             $this->mergeHeaders($this->applicationResponse, $response);
         }
 
-        return parent::sendHeaders($e);
+        return parent::sendHeaders($event);
     }
 
     /**
      * Send ApiProblem response.
-     *
-     * @return self
      */
-    public function __invoke(SendResponseEvent $event)
+    #[Override]
+    public function __invoke(SendResponseEvent $event): self
     {
         $response = $event->getResponse();
         if (! $response instanceof ApiProblemResponse) {

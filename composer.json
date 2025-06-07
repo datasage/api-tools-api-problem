@@ -41,14 +41,15 @@
         "laminas/laminas-view": "^2.32"
     },
     "require-dev": {
-        "laminas/laminas-coding-standard": "~2.5.0",
+        "brick/varexporter": "0.5",
+        "laminas/laminas-coding-standard": "^3",
         "phpspec/prophecy-phpunit": "^2.0",
         "phpunit/phpunit": "^10",
-        "psalm/plugin-phpunit": "^0.18",
+        "psalm/plugin-phpunit": "^0.19",
         "symfony/console": "^6 || ^7",
         "symfony/filesystem": "^6 || ^7",
         "symfony/string": "^6 || ^7",
-        "vimeo/psalm": "^5"
+        "vimeo/psalm": "^6"
     },
     "autoload": {
         "psr-4": {

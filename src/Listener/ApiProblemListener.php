@@ -15,6 +15,7 @@ use Laminas\Http\Request as HttpRequest;
 use Laminas\Mvc\MvcEvent;
 use Laminas\Stdlib\DispatchableInterface;
 use Laminas\View\Model\ModelInterface;
+use Override;
 use Throwable;
 
 use function in_array;
@@ -33,20 +34,16 @@ class ApiProblemListener extends AbstractListenerAggregate
 {
     /**
      * Default types to match in Accept header.
-     *
-     * @var array
      */
-    protected $acceptFilters = [
+    protected array $acceptFilters = [
         'application/json',
         'application/*+json',
     ];
 
     /**
      * Set the accept filter, if one is passed
-     *
-     * @param string|array $filters
      */
-    public function __construct($filters = null)
+    public function __construct(string|array|null $filters = null)
     {
         if (! empty($filters)) {
             if (is_string($filters)) {
@@ -62,7 +59,8 @@ class ApiProblemListener extends AbstractListenerAggregate
     /**
      * {@inheritDoc}
      */
-    public function attach(EventManagerInterface $events, $priority = 1)
+    #[Override]
+    public function attach(EventManagerInterface $events, $priority = 1): void
     {
         $this->listeners[] = $events->attach(MvcEvent::EVENT_RENDER, [$this, 'onRender'], 1000);
         $this->listeners[] = $events->attach(MvcEvent::EVENT_DISPATCH_ERROR, [$this, 'onDispatchError'], 100);
@@ -78,10 +76,8 @@ class ApiProblemListener extends AbstractListenerAggregate
 
     /**
      * Listen to the render event.
-     *
-     * @return void
      */
-    public function onRender(MvcEvent $e)
+    public function onRender(MvcEvent $e): void
     {
         if (! $this->validateErrorEvent($e)) {
             return;
@@ -98,7 +94,7 @@ class ApiProblemListener extends AbstractListenerAggregate
         $status    = $e->getResponse()->getStatusCode();
         $exception = $model->getVariable('exception');
 
-        if ($exception instanceof Throwable || $exception instanceof Exception) {
+        if ($exception instanceof Throwable) {
             $apiProblem = new ApiProblem($status, $exception);
         } else {
             $apiProblem = new ApiProblem($status, $model->getVariable('message'));
@@ -115,10 +111,8 @@ class ApiProblemListener extends AbstractListenerAggregate
      * Handle dispatch.
      *
      * It checks if the controller is in our list
-     *
-     * @return void
      */
-    public function onDispatch(MvcEvent $e)
+    public function onDispatch(MvcEvent $e): void
     {
         $app      = $e->getApplication();
         $services = $app->getServiceManager();
@@ -137,7 +131,7 @@ class ApiProblemListener extends AbstractListenerAggregate
 
         // Attach the ApiProblem render.error listener
         $events = $app->getEventManager();
-        $services->get('Laminas\ApiTools\ApiProblem\RenderErrorListener')->attach($events);
+        $services->get(RenderErrorListener::class)->attach($events);
     }
 
     /**
@@ -145,20 +139,18 @@ class ApiProblemListener extends AbstractListenerAggregate
      *
      * If the event represents an error, and has an exception composed, marshals an ApiProblem
      * based on the exception, stops event propagation, and returns an ApiProblemResponse.
-     *
-     * @return ApiProblemResponse|null
      */
-    public function onDispatchError(MvcEvent $e)
+    public function onDispatchError(MvcEvent $e): ?ApiProblemResponse
     {
         if (! $this->validateErrorEvent($e)) {
-            return;
+            return null;
         }
 
         // Marshall an ApiProblem and view model based on the exception
         $exception = $e->getParam('exception');
         if (! ($exception instanceof Throwable || $exception instanceof Exception)) {
             // If it's not an exception, do not know what to do.
-            return;
+            return null;
         }
 
         $e->stopPropagation();
@@ -170,10 +162,8 @@ class ApiProblemListener extends AbstractListenerAggregate
 
     /**
      * Determine if we have a valid error event.
-     *
-     * @return bool
      */
-    protected function validateErrorEvent(MvcEvent $e)
+    protected function validateErrorEvent(MvcEvent $e): bool
     {
         // only worried about error pages
         if (! $e->isError()) {
@@ -205,11 +195,9 @@ class ApiProblemListener extends AbstractListenerAggregate
      *
      * If it matches, but on "*\/*", return false.
      *
-     * Otherwise, return based on whether or not one or more criteria match.
-     *
-     * @return bool
+     * Otherwise, return based on whether one or more criteria match.
      */
-    protected function matchAcceptCriteria(AcceptHeader $accept)
+    protected function matchAcceptCriteria(AcceptHeader $accept): bool
     {
         foreach ($this->acceptFilters as $type) {
             $match = $accept->match($type);

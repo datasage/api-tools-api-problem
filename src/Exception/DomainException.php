@@ -4,69 +4,48 @@ declare(strict_types=1);
 
 namespace Laminas\ApiTools\ApiProblem\Exception;
 
+use Override;
+
 class DomainException extends \DomainException implements
     ExceptionInterface,
     ProblemExceptionInterface
 {
-    /** @var string */
-    protected $type;
+    protected ?string $type  = null;
+    protected array $details = [];
+    protected ?string $title = null;
 
-    /** @var array */
-    protected $details = [];
-
-    /** @var string */
-    protected $title;
-
-    /**
-     * @param array $details
-     * @return self
-     */
-    public function setAdditionalDetails(array $details)
+    public function setAdditionalDetails(array $details): self
     {
         $this->details = $details;
         return $this;
     }
 
-    /**
-     * @param string $uri
-     * @return self
-     */
-    public function setType($uri)
+    public function setType(string $uri): self
     {
-        $this->type = (string) $uri;
+        $this->type = $uri;
         return $this;
     }
 
-    /**
-     * @param string $title
-     * @return self
-     */
-    public function setTitle($title)
+    public function setTitle(string $title): self
     {
-        $this->title = (string) $title;
+        $this->title = $title;
         return $this;
     }
 
-    /**
-     * @return array
-     */
-    public function getAdditionalDetails()
+    #[Override]
+    public function getAdditionalDetails(): array
     {
         return $this->details;
     }
 
-    /**
-     * @return string
-     */
-    public function getType()
+    #[Override]
+    public function getType(): ?string
     {
         return $this->type;
     }
 
-    /**
-     * @return string
-     */
-    public function getTitle()
+    #[Override]
+    public function getTitle(): ?string
     {
         return $this->title;
     }

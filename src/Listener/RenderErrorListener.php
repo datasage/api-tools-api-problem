@@ -10,6 +10,7 @@ use Laminas\EventManager\AbstractListenerAggregate;
 use Laminas\EventManager\EventManagerInterface;
 use Laminas\Mvc\MvcEvent;
 use Laminas\View\Exception\ExceptionInterface as ViewExceptionInterface;
+use Override;
 use Throwable;
 
 use function json_encode;
@@ -21,24 +22,20 @@ use function json_encode;
  */
 class RenderErrorListener extends AbstractListenerAggregate
 {
-    /** @var bool */
-    protected $displayExceptions = false;
+    protected bool $displayExceptions = false;
 
     /**
      * {@inheritDoc}
      */
-    public function attach(EventManagerInterface $events, $priority = 1)
+    #[Override]
+    public function attach(EventManagerInterface $events, $priority = 1): void
     {
         $this->listeners[] = $events->attach(MvcEvent::EVENT_RENDER_ERROR, [$this, 'onRenderError'], 100);
     }
 
-    /**
-     * @param bool $flag
-     * @return RenderErrorListener
-     */
-    public function setDisplayExceptions($flag)
+    public function setDisplayExceptions(bool $flag): self
     {
-        $this->displayExceptions = (bool) $flag;
+        $this->displayExceptions = $flag;
 
         return $this;
     }
@@ -50,10 +47,8 @@ class RenderErrorListener extends AbstractListenerAggregate
      * the PhpRenderer, when we have no templates.
      *
      * As such, report as an unacceptable response.
-     *
-     * @return void
      */
-    public function onRenderError(MvcEvent $e)
+    public function onRenderError(MvcEvent $e): void
     {
         $response    = $e->getResponse();
         $status      = 406;

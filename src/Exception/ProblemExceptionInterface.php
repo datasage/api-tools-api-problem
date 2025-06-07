@@ -4,25 +4,14 @@ declare(strict_types=1);
 
 namespace Laminas\ApiTools\ApiProblem\Exception;
 
-use Traversable;
-
 /**
  * Interface for exceptions that can provide additional API Problem details.
  */
 interface ProblemExceptionInterface
 {
-    /**
-     * @return null|array|Traversable
-     */
-    public function getAdditionalDetails();
+    public function getAdditionalDetails(): array;
 
-    /**
-     * @return string
-     */
-    public function getType();
+    public function getType(): ?string;
 
-    /**
-     * @return string
-     */
-    public function getTitle();
+    public function getTitle(): ?string;
 }

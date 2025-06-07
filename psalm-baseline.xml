@@ -1,272 +1,242 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<files psalm-version="5.21.1@8c473e2437be8b6a8fd8f630f0f11a16b114c494">
-  <file src="config/module.config.php">
-    <UndefinedClass>
-      <code>ApiProblemListener</code>
-      <code>ApiProblemListener</code>
-      <code>ApiProblemRenderer</code>
-      <code>ApiProblemRenderer</code>
-      <code>ApiProblemStrategy</code>
-      <code>ApiProblemStrategy</code>
-      <code>RenderErrorListener</code>
-      <code>RenderErrorListener</code>
-      <code>\ZF\ApiProblem\ApiProblemListener</code>
-      <code>\ZF\ApiProblem\ApiProblemRenderer</code>
-      <code>\ZF\ApiProblem\ApiProblemStrategy</code>
-      <code>\ZF\ApiProblem\Listener\ApiProblemListener</code>
-      <code>\ZF\ApiProblem\Listener\RenderErrorListener</code>
-      <code>\ZF\ApiProblem\Listener\SendApiProblemResponseListener</code>
-      <code>\ZF\ApiProblem\RenderErrorListener</code>
-      <code>\ZF\ApiProblem\View\ApiProblemRenderer</code>
-      <code>\ZF\ApiProblem\View\ApiProblemStrategy</code>
-    </UndefinedClass>
-  </file>
+<files psalm-version="6.12.0@cf420941d061a57050b6c468ef2c778faf40aee2">
   <file src="src/ApiProblem.php">
-    <InvalidPropertyAssignmentValue>
-      <code>$additional</code>
-    </InvalidPropertyAssignmentValue>
-    <MixedAssignment>
-      <code>$prop</code>
-    </MixedAssignment>
-    <MixedInferredReturnType>
-      <code>string</code>
-    </MixedInferredReturnType>
-    <MixedReturnStatement>
-      <code><![CDATA[$this->problemStatusTitles[$this->status]]]></code>
-    </MixedReturnStatement>
-    <RedundantCastGivenDocblockType>
-      <code>(bool) $flag</code>
-    </RedundantCastGivenDocblockType>
-    <RiskyTruthyFalsyComparison>
-      <code>$status</code>
-    </RiskyTruthyFalsyComparison>
+    <ClassMustBeFinal>
+      <code><![CDATA[ApiProblem]]></code>
+    </ClassMustBeFinal>
   </file>
   <file src="src/ApiProblemResponse.php">
-    <MixedArgument>
-      <code><![CDATA[$apiProblem->status]]></code>
-      <code><![CDATA[$apiProblem->title]]></code>
-    </MixedArgument>
-    <MixedInferredReturnType>
-      <code>string</code>
-    </MixedInferredReturnType>
+    <ClassMustBeFinal>
+      <code><![CDATA[ApiProblemResponse]]></code>
+    </ClassMustBeFinal>
     <MixedReturnStatement>
       <code><![CDATA[$this->recommendedReasonPhrases[$this->statusCode]]]></code>
     </MixedReturnStatement>
     <RiskyTruthyFalsyComparison>
       <code><![CDATA[empty($this->reasonPhrase)]]></code>
+      <code><![CDATA[json_encode($this->apiProblem->toArray(), $this->jsonFlags)]]></code>
     </RiskyTruthyFalsyComparison>
   </file>
   <file src="src/Exception/DomainException.php">
-    <MissingConstructor>
-      <code>$title</code>
-      <code>$type</code>
-    </MissingConstructor>
-    <RedundantCastGivenDocblockType>
-      <code>(string) $title</code>
-      <code>(string) $uri</code>
-    </RedundantCastGivenDocblockType>
+    <ClassMustBeFinal>
+      <code><![CDATA[DomainException]]></code>
+    </ClassMustBeFinal>
+  </file>
+  <file src="src/Exception/InvalidArgumentException.php">
+    <ClassMustBeFinal>
+      <code><![CDATA[InvalidArgumentException]]></code>
+    </ClassMustBeFinal>
   </file>
   <file src="src/Factory/ApiProblemListenerFactory.php">
+    <ClassMustBeFinal>
+      <code><![CDATA[ApiProblemListenerFactory]]></code>
+    </ClassMustBeFinal>
     <MixedArgument>
-      <code>$filters</code>
+      <code><![CDATA[$filters]]></code>
     </MixedArgument>
     <MixedArrayAccess>
       <code><![CDATA[$config['api-tools-api-problem']['accept_filters']]]></code>
     </MixedArrayAccess>
     <MixedAssignment>
-      <code>$config</code>
-      <code>$filters</code>
+      <code><![CDATA[$config]]></code>
+      <code><![CDATA[$filters]]></code>
     </MixedAssignment>
   </file>
   <file src="src/Factory/ApiProblemRendererFactory.php">
+    <ClassMustBeFinal>
+      <code><![CDATA[ApiProblemRendererFactory]]></code>
+    </ClassMustBeFinal>
     <MixedArrayAccess>
       <code><![CDATA[$config['view_manager']['display_exceptions']]]></code>
     </MixedArrayAccess>
     <MixedAssignment>
-      <code>$config</code>
+      <code><![CDATA[$config]]></code>
     </MixedAssignment>
   </file>
   <file src="src/Factory/ApiProblemStrategyFactory.php">
+    <ClassMustBeFinal>
+      <code><![CDATA[ApiProblemStrategyFactory]]></code>
+    </ClassMustBeFinal>
     <MixedArgument>
       <code><![CDATA[$container->get(ApiProblemRenderer::class)]]></code>
     </MixedArgument>
   </file>
   <file src="src/Factory/RenderErrorListenerFactory.php">
-    <MixedArrayAccess>
-      <code><![CDATA[$config['view_manager']['display_exceptions']]]></code>
-    </MixedArrayAccess>
-    <MixedAssignment>
-      <code>$config</code>
-    </MixedAssignment>
+    <ClassMustBeFinal>
+      <code><![CDATA[RenderErrorListenerFactory]]></code>
+    </ClassMustBeFinal>
   </file>
   <file src="src/Factory/SendApiProblemResponseListenerFactory.php">
+    <ClassMustBeFinal>
+      <code><![CDATA[SendApiProblemResponseListenerFactory]]></code>
+    </ClassMustBeFinal>
     <MixedArrayAccess>
       <code><![CDATA[$config['view_manager']['display_exceptions']]]></code>
     </MixedArrayAccess>
     <MixedAssignment>
-      <code>$config</code>
-      <code>$response</code>
+      <code><![CDATA[$config]]></code>
+      <code><![CDATA[$response]]></code>
     </MixedAssignment>
   </file>
   <file src="src/Listener/ApiProblemListener.php">
+    <ClassMustBeFinal>
+      <code><![CDATA[ApiProblemListener]]></code>
+    </ClassMustBeFinal>
     <MixedArgument>
-      <code>$accept</code>
-      <code>$controllers</code>
+      <code><![CDATA[$accept]]></code>
+      <code><![CDATA[$controllers]]></code>
       <code><![CDATA[$model->getVariable('message')]]></code>
-      <code>$status</code>
-      <code>$status</code>
-      <code>$type</code>
+      <code><![CDATA[$status]]></code>
+      <code><![CDATA[$status]]></code>
+      <code><![CDATA[$type]]></code>
     </MixedArgument>
     <MixedArrayAccess>
       <code><![CDATA[$config['api-tools-api-problem']]]></code>
       <code><![CDATA[$config['api-tools-api-problem']['render_error_controllers']]]></code>
     </MixedArrayAccess>
     <MixedAssignment>
-      <code>$accept</code>
-      <code>$config</code>
-      <code>$controller</code>
-      <code>$controllers</code>
-      <code>$exception</code>
-      <code>$status</code>
-      <code>$type</code>
+      <code><![CDATA[$accept]]></code>
+      <code><![CDATA[$config]]></code>
+      <code><![CDATA[$controller]]></code>
+      <code><![CDATA[$controllers]]></code>
+      <code><![CDATA[$exception]]></code>
+      <code><![CDATA[$status]]></code>
+      <code><![CDATA[$type]]></code>
     </MixedAssignment>
     <MixedMethodCall>
-      <code>attach</code>
+      <code><![CDATA[attach]]></code>
     </MixedMethodCall>
     <PossiblyInvalidMethodCall>
-      <code>get</code>
-      <code>getTypeString</code>
-      <code>has</code>
+      <code><![CDATA[get]]></code>
+      <code><![CDATA[getTypeString]]></code>
+      <code><![CDATA[has]]></code>
     </PossiblyInvalidMethodCall>
     <PossiblyNullReference>
-      <code>attach</code>
-      <code>getParam</code>
+      <code><![CDATA[attach]]></code>
+      <code><![CDATA[getParam]]></code>
     </PossiblyNullReference>
     <PossiblyUndefinedMethod>
-      <code>get</code>
-      <code>has</code>
+      <code><![CDATA[get]]></code>
+      <code><![CDATA[has]]></code>
     </PossiblyUndefinedMethod>
     <RiskyTruthyFalsyComparison>
-      <code>empty($filters)</code>
+      <code><![CDATA[empty($filters)]]></code>
     </RiskyTruthyFalsyComparison>
     <UndefinedInterfaceMethod>
-      <code>getStatusCode</code>
+      <code><![CDATA[getStatusCode]]></code>
     </UndefinedInterfaceMethod>
   </file>
   <file src="src/Listener/RenderErrorListener.php">
+    <ClassMustBeFinal>
+      <code><![CDATA[RenderErrorListener]]></code>
+    </ClassMustBeFinal>
     <MixedAssignment>
-      <code>$exception</code>
+      <code><![CDATA[$exception]]></code>
     </MixedAssignment>
     <MixedMethodCall>
-      <code>addHeaderLine</code>
+      <code><![CDATA[addHeaderLine]]></code>
     </MixedMethodCall>
-    <RedundantCastGivenDocblockType>
-      <code>(bool) $flag</code>
-    </RedundantCastGivenDocblockType>
     <UndefinedInterfaceMethod>
-      <code>getHeaders</code>
-      <code>setStatusCode</code>
+      <code><![CDATA[getHeaders]]></code>
+      <code><![CDATA[setStatusCode]]></code>
     </UndefinedInterfaceMethod>
   </file>
   <file src="src/Listener/SendApiProblemResponseListener.php">
-    <ImplementedReturnTypeMismatch>
-      <code>self</code>
-    </ImplementedReturnTypeMismatch>
-    <InvalidDocblock>
-      <code>protected $applicationResponse;</code>
-    </InvalidDocblock>
+    <ClassMustBeFinal>
+      <code><![CDATA[SendApiProblemResponseListener]]></code>
+    </ClassMustBeFinal>
     <LessSpecificReturnStatement>
-      <code>parent::sendContent($e)</code>
-      <code>parent::sendHeaders($e)</code>
+      <code><![CDATA[parent::sendHeaders($event)]]></code>
     </LessSpecificReturnStatement>
-    <MissingPropertyType>
-      <code>$applicationResponse</code>
-    </MissingPropertyType>
     <MoreSpecificReturnType>
-      <code>self</code>
-      <code>self</code>
+      <code><![CDATA[SendApiProblemResponseListener]]></code>
     </MoreSpecificReturnType>
-    <ParamNameMismatch>
-      <code>$e</code>
-      <code>$e</code>
-    </ParamNameMismatch>
     <PossiblyInvalidArgument>
-      <code>$header</code>
+      <code><![CDATA[$header]]></code>
     </PossiblyInvalidArgument>
     <PossiblyInvalidMethodCall>
-      <code>getFieldName</code>
+      <code><![CDATA[getFieldName]]></code>
     </PossiblyInvalidMethodCall>
-    <RedundantCastGivenDocblockType>
-      <code>(bool) $flag</code>
-    </RedundantCastGivenDocblockType>
+    <PossiblyUnusedReturnValue>
+      <code><![CDATA[HttpResponseSender]]></code>
+    </PossiblyUnusedReturnValue>
   </file>
   <file src="src/Module.php">
+    <ClassMustBeFinal>
+      <code><![CDATA[Module]]></code>
+    </ClassMustBeFinal>
     <MixedAssignment>
-      <code>$events</code>
-      <code>$sendResponseListener</code>
-      <code>$view</code>
+      <code><![CDATA[$events]]></code>
+      <code><![CDATA[$sendResponseListener]]></code>
+      <code><![CDATA[$view]]></code>
     </MixedAssignment>
-    <MixedInferredReturnType>
-      <code>array</code>
-    </MixedInferredReturnType>
     <MixedMethodCall>
-      <code>attach</code>
-      <code>attach</code>
-      <code>attach</code>
-      <code>getEventManager</code>
-      <code>getEventManager</code>
+      <code><![CDATA[attach]]></code>
+      <code><![CDATA[attach]]></code>
+      <code><![CDATA[attach]]></code>
+      <code><![CDATA[getEventManager]]></code>
+      <code><![CDATA[getEventManager]]></code>
     </MixedMethodCall>
     <MixedReturnStatement>
       <code><![CDATA[include __DIR__ . '/../config/module.config.php']]></code>
     </MixedReturnStatement>
+    <PossiblyUnusedMethod>
+      <code><![CDATA[getConfig]]></code>
+    </PossiblyUnusedMethod>
   </file>
   <file src="src/View/ApiProblemModel.php">
+    <ClassMustBeFinal>
+      <code><![CDATA[ApiProblemModel]]></code>
+    </ClassMustBeFinal>
     <PropertyNotSetInConstructor>
-      <code>$problem</code>
+      <code><![CDATA[$problem]]></code>
     </PropertyNotSetInConstructor>
   </file>
   <file src="src/View/ApiProblemRenderer.php">
+    <ClassMustBeFinal>
+      <code><![CDATA[ApiProblemRenderer]]></code>
+    </ClassMustBeFinal>
     <InvalidArgument>
       <code><![CDATA[$apiProblem->toArray()]]></code>
     </InvalidArgument>
-    <MoreSpecificImplementedParamType>
-      <code>$values</code>
-      <code>$values</code>
-    </MoreSpecificImplementedParamType>
-    <RedundantCastGivenDocblockType>
-      <code>(bool) $flag</code>
-    </RedundantCastGivenDocblockType>
   </file>
   <file src="src/View/ApiProblemStrategy.php">
+    <ClassMustBeFinal>
+      <code><![CDATA[ApiProblemStrategy]]></code>
+    </ClassMustBeFinal>
     <LessSpecificReturnStatement>
       <code><![CDATA[$this->renderer]]></code>
     </LessSpecificReturnStatement>
     <MixedAssignment>
-      <code>$headers</code>
-      <code>$status</code>
+      <code><![CDATA[$headers]]></code>
     </MixedAssignment>
-    <MixedInferredReturnType>
-      <code>int</code>
-    </MixedInferredReturnType>
     <MixedMethodCall>
-      <code>addHeaderLine</code>
+      <code><![CDATA[addHeaderLine]]></code>
     </MixedMethodCall>
-    <MixedReturnStatement>
-      <code>$status</code>
-    </MixedReturnStatement>
     <MoreSpecificReturnType>
-      <code>null|ApiProblemRenderer</code>
+      <code><![CDATA[?ApiProblemRenderer]]></code>
     </MoreSpecificReturnType>
+    <PossiblyNullArgument>
+      <code><![CDATA[$problem]]></code>
+    </PossiblyNullArgument>
     <PossiblyNullReference>
-      <code>setContent</code>
-      <code>setStatusCode</code>
+      <code><![CDATA[setContent]]></code>
+      <code><![CDATA[setStatusCode]]></code>
     </PossiblyNullReference>
     <UndefinedInterfaceMethod>
-      <code>getHeaders</code>
-      <code>setStatusCode</code>
+      <code><![CDATA[getHeaders]]></code>
+      <code><![CDATA[setStatusCode]]></code>
     </UndefinedInterfaceMethod>
   </file>
+  <file src="test/ApiProblemResponseTest.php">
+    <ClassMustBeFinal>
+      <code><![CDATA[ApiProblemResponseTest]]></code>
+    </ClassMustBeFinal>
+  </file>
   <file src="test/ApiProblemTest.php">
+    <ClassMustBeFinal>
+      <code><![CDATA[ApiProblemTest]]></code>
+    </ClassMustBeFinal>
     <InvalidReturnStatement>
       <code><![CDATA[[
             '-1'  => [-1],
@@ -299,30 +269,39 @@
       <code><![CDATA[array<string, array{0: int}>]]></code>
     </InvalidReturnType>
     <MixedArrayAccess>
-      <code>$titles[$status]</code>
+      <code><![CDATA[$titles[$status]]]></code>
     </MixedArrayAccess>
     <MixedAssignment>
-      <code>$titles</code>
+      <code><![CDATA[$titles]]></code>
     </MixedAssignment>
+    <UndefinedMagicPropertyFetch>
+      <code><![CDATA[$problem->foo]]></code>
+    </UndefinedMagicPropertyFetch>
     <UnusedMethodCall>
-      <code>setAccessible</code>
+      <code><![CDATA[setAccessible]]></code>
     </UnusedMethodCall>
   </file>
   <file src="test/Listener/ApiProblemListenerTest.php">
+    <ClassMustBeFinal>
+      <code><![CDATA[ApiProblemListenerTest]]></code>
+    </ClassMustBeFinal>
     <PossiblyInvalidMethodCall>
-      <code>addHeaderLine</code>
-      <code>addHeaderLine</code>
+      <code><![CDATA[addHeaderLine]]></code>
+      <code><![CDATA[addHeaderLine]]></code>
     </PossiblyInvalidMethodCall>
     <PossiblyUndefinedMethod>
-      <code>addHeaderLine</code>
-      <code>addHeaderLine</code>
+      <code><![CDATA[addHeaderLine]]></code>
+      <code><![CDATA[addHeaderLine]]></code>
     </PossiblyUndefinedMethod>
   </file>
   <file src="test/Listener/RenderErrorListenerTest.php">
+    <ClassMustBeFinal>
+      <code><![CDATA[RenderErrorListenerTest]]></code>
+    </ClassMustBeFinal>
     <MixedArgument>
-      <code>$content</code>
-      <code>$content</code>
-      <code>$content</code>
+      <code><![CDATA[$content]]></code>
+      <code><![CDATA[$content]]></code>
+      <code><![CDATA[$content]]></code>
       <code><![CDATA[$content['describedBy']]]></code>
       <code><![CDATA[$content['describedBy']]]></code>
       <code><![CDATA[$content['describedBy']]]></code>
@@ -332,30 +311,33 @@
       <code><![CDATA[$response->getContent()]]></code>
     </MixedArgument>
     <MixedAssignment>
-      <code>$content</code>
-      <code>$content</code>
-      <code>$content</code>
+      <code><![CDATA[$content]]></code>
+      <code><![CDATA[$content]]></code>
+      <code><![CDATA[$content]]></code>
     </MixedAssignment>
     <PossiblyInvalidMethodCall>
-      <code>addHeaderLine</code>
-      <code>addHeaderLine</code>
-      <code>addHeaderLine</code>
-      <code>getFieldValue</code>
-      <code>getFieldValue</code>
-      <code>getFieldValue</code>
+      <code><![CDATA[addHeaderLine]]></code>
+      <code><![CDATA[addHeaderLine]]></code>
+      <code><![CDATA[addHeaderLine]]></code>
+      <code><![CDATA[getFieldValue]]></code>
+      <code><![CDATA[getFieldValue]]></code>
+      <code><![CDATA[getFieldValue]]></code>
     </PossiblyInvalidMethodCall>
     <PossiblyUndefinedMethod>
-      <code>addHeaderLine</code>
-      <code>addHeaderLine</code>
-      <code>addHeaderLine</code>
-      <code>getFieldValue</code>
-      <code>getFieldValue</code>
-      <code>getFieldValue</code>
+      <code><![CDATA[addHeaderLine]]></code>
+      <code><![CDATA[addHeaderLine]]></code>
+      <code><![CDATA[addHeaderLine]]></code>
+      <code><![CDATA[getFieldValue]]></code>
+      <code><![CDATA[getFieldValue]]></code>
+      <code><![CDATA[getFieldValue]]></code>
     </PossiblyUndefinedMethod>
   </file>
   <file src="test/Listener/SendApiProblemResponseListenerTest.php">
+    <ClassMustBeFinal>
+      <code><![CDATA[SendApiProblemResponseListenerTest]]></code>
+    </ClassMustBeFinal>
     <MixedArgument>
-      <code>$data</code>
+      <code><![CDATA[$data]]></code>
       <code><![CDATA[$data['detail']]]></code>
       <code><![CDATA[$data['detail']]]></code>
     </MixedArgument>
@@ -364,25 +346,28 @@
       <code><![CDATA[$data['detail']]]></code>
     </MixedArrayAccess>
     <MixedAssignment>
-      <code>$data</code>
-      <code>$data</code>
+      <code><![CDATA[$data]]></code>
+      <code><![CDATA[$data]]></code>
     </MixedAssignment>
   </file>
   <file src="test/ModuleTest.php">
+    <ClassMustBeFinal>
+      <code><![CDATA[ModuleTest]]></code>
+    </ClassMustBeFinal>
     <DeprecatedMethod>
-      <code>getMockForAbstractClass</code>
-      <code>returnCallback</code>
+      <code><![CDATA[getMockForAbstractClass]]></code>
+      <code><![CDATA[returnCallback]]></code>
     </DeprecatedMethod>
     <UndefinedMethod>
-      <code>setSharedManager</code>
+      <code><![CDATA[setSharedManager]]></code>
     </UndefinedMethod>
   </file>
   <file src="test/View/ApiProblemRendererTest.php">
     <MixedArgument>
-      <code>$test</code>
+      <code><![CDATA[$test]]></code>
     </MixedArgument>
     <MixedAssignment>
-      <code>$test</code>
+      <code><![CDATA[$test]]></code>
     </MixedAssignment>
   </file>
 </files>

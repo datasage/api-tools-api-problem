@@ -8,16 +8,18 @@ use Exception;
 use Laminas\ApiTools\ApiProblem\ApiProblem;
 use Laminas\ApiTools\ApiProblem\View\ApiProblemModel;
 use Laminas\ApiTools\ApiProblem\View\ApiProblemRenderer;
+use Override;
 use PHPUnit\Framework\TestCase;
 
 use function count;
 use function json_decode;
 
-class ApiProblemRendererTest extends TestCase
+final class ApiProblemRendererTest extends TestCase
 {
     /** @var ApiProblemRenderer */
     protected $renderer;
 
+    #[Override]
     protected function setUp(): void
     {
         $this->renderer = new ApiProblemRenderer();

@@ -22,6 +22,11 @@ use function trim;
 
 /**
  * Object describing an API-Problem payload.
+ *
+ * @property int $status
+ * @property string|null $title
+ * @property string $type
+ * @property string|Throwable $detail
  */
 class ApiProblem
 {
@@ -32,46 +37,36 @@ class ApiProblem
 
     /**
      * Additional details to include in report.
-     *
-     * @var array
      */
-    protected $additionalDetails = [];
+    protected array $additionalDetails = [];
 
     /**
      * URL describing the problem type; defaults to HTTP status codes.
-     *
-     * @var string
      */
-    protected $type = 'http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html';
+    protected string $type = 'http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html';
 
     /**
      * Description of the specific problem.
-     *
-     * @var string|Exception|Throwable
      */
-    protected $detail = '';
+    protected string|Throwable $detail = '';
 
     /**
-     * Whether or not to include a stack trace and previous
+     * Whether to include a stack trace and previous
      * exceptions when an exception is provided for the detail.
-     *
-     * @var bool
      */
-    protected $detailIncludesStackTrace = false;
+    protected bool $detailIncludesStackTrace = false;
 
     /**
      * HTTP status for the error.
-     *
-     * @var int
      */
-    protected $status;
+    protected int $status;
 
     /**
      * Normalized property names for overloading.
      *
-     * @var array
+     * @var array<string, string>
      */
-    protected $normalizedProperties = [
+    protected array $normalizedProperties = [
         'type'   => 'type',
         'status' => 'status',
         'title'  => 'title',
@@ -81,9 +76,9 @@ class ApiProblem
     /**
      * Status titles for common problems.
      *
-     * @var array
+     * @var array<int, string>
      */
-    protected $problemStatusTitles = [
+    protected array $problemStatusTitles = [
         // CLIENT ERROR
         400 => 'Bad Request',
         401 => 'Unauthorized',
@@ -127,24 +122,16 @@ class ApiProblem
 
     /**
      * Title of the error.
-     *
-     * @var string|null
      */
-    protected $title;
+    protected ?string $title;
 
     /**
      * Create an instance using the provided information. If nothing is
      * provided for the type field, the class default will be used;
      * if the status matches any known, the title field will be selected
      * from $problemStatusTitles as a result.
-     *
-     * @param int|string $status
-     * @param string|Exception|Throwable $detail
-     * @param string $type
-     * @param string $title
-     * @param array  $additional
      */
-    public function __construct($status, $detail, $type = null, $title = null, array $additional = [])
+    public function __construct(int|string $status, string|Throwable $detail, ?string $type = null, ?string $title = null, array $additional = [])
     {
         if ($detail instanceof ProblemExceptionInterface) {
             if (null === $type) {
@@ -181,11 +168,9 @@ class ApiProblem
     /**
      * Retrieve properties.
      *
-     * @param string $name
-     * @return mixed
      * @throws InvalidArgumentException
      */
-    public function __get($name)
+    public function __get(string $name): mixed
     {
         $normalized = strtolower($name);
         if (in_array($normalized, array_keys($this->normalizedProperties))) {
@@ -211,9 +196,9 @@ class ApiProblem
     /**
      * Cast to an array.
      *
-     * @return array
+     * @return array{type: string, title: string, status: int, detail: string, ...}
      */
-    public function toArray()
+    public function toArray(): array
     {
         $problem = [
             'type'   => $this->type,
@@ -229,12 +214,11 @@ class ApiProblem
      * Set the flag indicating whether an exception detail should include a
      * stack trace and previous exception information.
      *
-     * @param bool $flag
      * @return ApiProblem
      */
-    public function setDetailIncludesStackTrace($flag)
+    public function setDetailIncludesStackTrace(bool $flag): self
     {
-        $this->detailIncludesStackTrace = (bool) $flag;
+        $this->detailIncludesStackTrace = $flag;
 
         return $this;
     }
@@ -244,12 +228,10 @@ class ApiProblem
      *
      * If an exception was provided, creates the detail message from it;
      * otherwise, detail as provided is used.
-     *
-     * @return string
      */
-    protected function getDetail()
+    protected function getDetail(): string
     {
-        if ($this->detail instanceof Throwable || $this->detail instanceof Exception) {
+        if ($this->detail instanceof Throwable) {
             return $this->createDetailFromException();
         }
 
@@ -264,7 +246,7 @@ class ApiProblem
      */
     protected function getStatus(): int
     {
-        if ($this->detail instanceof Throwable || $this->detail instanceof Exception) {
+        if ($this->detail instanceof Throwable) {
             $this->status = (int) $this->createStatusFromException();
         }
 
@@ -281,18 +263,15 @@ class ApiProblem
      * string 'Unknown'.
      *
      * Otherwise, use the title provided.
-     *
-     * @return string
      */
-    protected function getTitle()
+    protected function getTitle(): string
     {
         if (null !== $this->title) {
             return $this->title;
         }
 
         if (
-            null === $this->title
-            && $this->type === 'http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html'
+            $this->type === 'http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html'
             && array_key_exists($this->getStatus(), $this->problemStatusTitles)
         ) {
             return $this->problemStatusTitles[$this->status];
@@ -307,10 +286,8 @@ class ApiProblem
 
     /**
      * Create detail message from an exception.
-     *
-     * @return string
      */
-    protected function createDetailFromException()
+    protected function createDetailFromException(): string
     {
         /** @var Exception|Throwable $e */
         $e = $this->detail;
@@ -341,10 +318,8 @@ class ApiProblem
 
     /**
      * Create HTTP status from an exception.
-     *
-     * @return int|string
      */
-    protected function createStatusFromException()
+    protected function createStatusFromException(): int|string
     {
         /** @var Exception|Throwable $e */
         $e      = $this->detail;

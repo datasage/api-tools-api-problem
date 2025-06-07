@@ -12,6 +12,7 @@ use Laminas\Http\Request;
 use Laminas\Mvc\Application;
 use Laminas\Mvc\MvcEvent;
 use Laminas\Stdlib\RequestInterface;
+use Override;
 use PHPUnit\Framework\TestCase;
 use Prophecy\PhpUnit\ProphecyTrait;
 use TypeError;
@@ -26,6 +27,7 @@ class ApiProblemListenerTest extends TestCase
     /** @var ApiProblemListener */
     protected $listener;
 
+    #[Override]
     protected function setUp(): void
     {
         $this->event = new MvcEvent();

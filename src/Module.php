@@ -12,10 +12,8 @@ class Module
 {
     /**
      * Retrieve module configuration
-     *
-     * @return array
      */
-    public function getConfig()
+    public function getConfig(): array
     {
         return include __DIR__ . '/../config/module.config.php';
     }
@@ -24,10 +22,8 @@ class Module
      * Listener for bootstrap event.
      *
      * Attaches a render event.
-     *
-     * @return void
      */
-    public function onBootstrap(MvcEvent $e)
+    public function onBootstrap(MvcEvent $e): void
     {
         $app            = $e->getApplication();
         $serviceManager = $app->getServiceManager();
@@ -48,10 +44,8 @@ class Module
      * Listener for the render event.
      *
      * Attaches a rendering/response strategy to the View.
-     *
-     * @return void
      */
-    public function onRender(MvcEvent $e)
+    public function onRender(MvcEvent $e): void
     {
         $app      = $e->getApplication();
         $services = $app->getServiceManager();

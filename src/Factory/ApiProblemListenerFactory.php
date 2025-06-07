@@ -9,10 +9,7 @@ use Laminas\ApiTools\ApiProblem\Listener\ApiProblemListener;
 
 class ApiProblemListenerFactory
 {
-    /**
-     * @return ApiProblemListener
-     */
-    public function __invoke(ContainerInterface $container)
+    public function __invoke(ContainerInterface $container): ApiProblemListener
     {
         $filters = null;
         $config  = [];

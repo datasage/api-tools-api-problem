@@ -11,10 +11,7 @@ class ApiProblemModel extends ViewModel
 {
     /** @var string */
     protected $captureTo = 'errors';
-
-    /** @var ApiProblem */
-    protected $problem;
-
+    protected ?ApiProblem $problem;
     /** @var bool */
     protected $terminate = true;
 
@@ -28,17 +25,14 @@ class ApiProblemModel extends ViewModel
     /**
      * @return ApiProblemModel
      */
-    public function setApiProblem(ApiProblem $problem)
+    public function setApiProblem(ApiProblem $problem): self
     {
         $this->problem = $problem;
 
         return $this;
     }
 
-    /**
-     * @return ApiProblem
-     */
-    public function getApiProblem()
+    public function getApiProblem(): ?ApiProblem
     {
         return $this->problem;
     }

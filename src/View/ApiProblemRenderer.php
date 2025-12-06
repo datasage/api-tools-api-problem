@@ -6,6 +6,7 @@ namespace Laminas\ApiTools\ApiProblem\View;
 
 use Laminas\View\Model\ModelInterface;
 use Laminas\View\Renderer\JsonRenderer;
+use Override;
 
 class ApiProblemRenderer extends JsonRenderer
 {
@@ -34,6 +35,7 @@ class ApiProblemRenderer extends JsonRenderer
      * @param array|null                             $values
      * @return string
      */
+    #[Override]
     public function render($nameOrModel, $values = null)
     {
         if (! $nameOrModel instanceof ApiProblemModel) {

@@ -11,6 +11,7 @@ use Laminas\ApiTools\ApiProblem\Listener\SendApiProblemResponseListener;
 use Laminas\Http\Response as HttpResponse;
 use Laminas\Mvc\ResponseSender\ResponseSenderInterface;
 use Laminas\Mvc\ResponseSender\SendResponseEvent;
+use Override;
 use PHPUnit\Framework\TestCase;
 
 use function count;
@@ -35,6 +36,7 @@ class SendApiProblemResponseListenerTest extends TestCase
     /** @var SendApiProblemResponseListener */
     protected $listener;
 
+    #[Override]
     protected function setUp(): void
     {
         $this->exception  = new DomainException('Random error', 400);

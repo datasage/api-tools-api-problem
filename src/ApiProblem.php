@@ -23,7 +23,7 @@ use function trim;
 /**
  * Object describing an API-Problem payload.
  */
-class ApiProblem
+final class ApiProblem
 {
     /**
      * Content type for api problem response
@@ -142,7 +142,6 @@ class ApiProblem
      * @param string|Exception|Throwable $detail
      * @param string $type
      * @param string $title
-     * @param array  $additional
      */
     public function __construct($status, $detail, $type = null, $title = null, array $additional = [])
     {

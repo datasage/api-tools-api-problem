@@ -10,6 +10,7 @@ use Laminas\Http\Request;
 use Laminas\Http\Response;
 use Laminas\Mvc\Application;
 use Laminas\Mvc\MvcEvent;
+use Override;
 use PHPUnit\Framework\TestCase;
 use RuntimeException;
 use TypeError;
@@ -21,6 +22,7 @@ class RenderErrorListenerTest extends TestCase
     /** @var RenderErrorListener */
     protected $listener;
 
+    #[Override]
     protected function setUp(): void
     {
         $this->listener = new RenderErrorListener();

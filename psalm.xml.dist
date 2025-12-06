@@ -33,6 +33,9 @@
                 <file name="./config/module.config.php" />
             </errorLevel>
         </MixedArrayOffset>
+
+        <DeprecatedClass errorLevel="info"/>
+        <DeprecatedMethod errorLevel="info"/>
     </issueHandlers>
     <plugins>
         <pluginClass class="Psalm\PhpUnitPlugin\Plugin"/>

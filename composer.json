@@ -21,7 +21,7 @@
     "config": {
         "sort-packages": true,
         "platform": {
-            "php": "8.1.99"
+            "php": "8.3.99"
         },
         "allow-plugins": {
             "dealerdirect/phpcodesniffer-composer-installer": true
@@ -33,7 +33,7 @@
         }
     },
     "require": {
-        "php": "~8.1.0 || ~8.2.0 || ~8.3.0 || ~8.4.0",
+        "php": "~8.3.0 || ~8.4.0 || ~8.5.0",
         "ext-json": "*",
         "laminas/laminas-eventmanager": "^3.12",
         "laminas/laminas-http": "^2.19",
@@ -41,14 +41,14 @@
         "laminas/laminas-view": "^2.32"
     },
     "require-dev": {
-        "laminas/laminas-coding-standard": "~2.5.0",
+        "laminas/laminas-coding-standard": "~3",
         "phpspec/prophecy-phpunit": "^2.0",
-        "phpunit/phpunit": "^10",
-        "psalm/plugin-phpunit": "^0.18",
-        "symfony/console": "^6 || ^7",
-        "symfony/filesystem": "^6 || ^7",
-        "symfony/string": "^6 || ^7",
-        "vimeo/psalm": "^5"
+        "phpunit/phpunit": "^12",
+        "psalm/plugin-phpunit": "^0.19",
+        "symfony/console": "^6 || ^7 || ^8",
+        "symfony/filesystem": "^6 || ^7 || ^8",
+        "symfony/string": "^6 || ^7 || ^8",
+        "vimeo/psalm": "^6"
     },
     "autoload": {
         "psr-4": {

@@ -13,6 +13,7 @@ use Laminas\Http\Response;
 use Laminas\View\Model\JsonModel;
 use Laminas\View\Model\ViewModel;
 use Laminas\View\ViewEvent;
+use Override;
 use PHPUnit\Framework\TestCase;
 
 class ApiProblemStrategyTest extends TestCase
@@ -29,6 +30,7 @@ class ApiProblemStrategyTest extends TestCase
     /** @var ApiProblemStrategy */
     protected $strategy;
 
+    #[Override]
     protected function setUp(): void
     {
         $this->response = new Response();

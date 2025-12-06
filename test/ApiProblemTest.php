@@ -6,6 +6,8 @@ namespace LaminasTest\ApiTools\ApiProblem;
 
 use Laminas\ApiTools\ApiProblem\ApiProblem;
 use Laminas\ApiTools\ApiProblem\Exception;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\TestCase;
 use ReflectionObject;
 use TypeError;
@@ -28,9 +30,7 @@ class ApiProblemTest extends TestCase
         ];
     }
 
-    /**
-     * @dataProvider statusCodes
-     */
+    #[DataProvider('statusCodes')]
     public function testStatusIsUsedVerbatim(int $status): void
     {
         $apiProblem = new ApiProblem($status, 'foo');
@@ -132,9 +132,7 @@ class ApiProblemTest extends TestCase
         ];
     }
 
-    /**
-     * @dataProvider knownStatusCodes
-     */
+    #[DataProvider('knownStatusCodes')]
     public function testKnownStatusResultsInKnownTitle(int $status): void
     {
         $apiProblem = new ApiProblem($status, 'foo');
@@ -246,10 +244,8 @@ class ApiProblemTest extends TestCase
         ];
     }
 
-    /**
-     * @dataProvider invalidStatusCodes
-     * @group api-tools-118
-     */
+    #[DataProvider('invalidStatusCodes')]
+    #[Group('api-tools-118')]
     public function testInvalidHttpStatusCodesAreCastTo500(int $code): void
     {
         $e       = new \Exception('Testing', $code);

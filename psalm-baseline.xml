@@ -215,6 +215,9 @@
       <code><![CDATA[parent::sendContent($e)]]></code>
       <code><![CDATA[parent::sendHeaders($e)]]></code>
     </LessSpecificReturnStatement>
+    <MissingConstructor>
+      <code><![CDATA[$applicationResponse]]></code>
+    </MissingConstructor>
     <MoreSpecificReturnType>
       <code><![CDATA[self]]></code>
       <code><![CDATA[self]]></code>
@@ -235,6 +238,9 @@
     <RedundantCastGivenDocblockType>
       <code><![CDATA[(bool) $flag]]></code>
     </RedundantCastGivenDocblockType>
+    <RedundantConditionGivenDocblockType>
+      <code><![CDATA[$this->applicationResponse instanceof HttpResponse]]></code>
+    </RedundantConditionGivenDocblockType>
   </file>
   <file src="src/Module.php">
     <ClassMustBeFinal>
@@ -293,7 +299,9 @@
     <InvalidExtendClass>
       <code><![CDATA[JsonRenderer]]></code>
     </InvalidExtendClass>
-    <MethodSignatureMismatch/>
+    <MethodSignatureMismatch>
+      <code><![CDATA[#[Override]]]></code>
+    </MethodSignatureMismatch>
     <MoreSpecificImplementedParamType>
       <code><![CDATA[$values]]></code>
       <code><![CDATA[$values]]></code>
@@ -319,6 +327,8 @@
       <code><![CDATA[$this->renderer]]></code>
     </LessSpecificReturnStatement>
     <MethodSignatureMismatch>
+      <code><![CDATA[#[Override]]]></code>
+      <code><![CDATA[#[Override]]]></code>
       <code><![CDATA[public function __construct(ApiProblemRenderer $renderer)]]></code>
     </MethodSignatureMismatch>
     <MixedAssignment>

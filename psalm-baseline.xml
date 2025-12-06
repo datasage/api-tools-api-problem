@@ -505,19 +505,10 @@
     <ClassMustBeFinal>
       <code><![CDATA[ModuleTest]]></code>
     </ClassMustBeFinal>
-    <MixedAssignment>
-      <code><![CDATA[$serviceLocator]]></code>
-    </MixedAssignment>
-    <MixedMethodCall>
-      <code><![CDATA[method]]></code>
-      <code><![CDATA[will]]></code>
-    </MixedMethodCall>
-    <PossiblyUnusedMethod>
-      <code><![CDATA[serviceLocator]]></code>
-    </PossiblyUnusedMethod>
+    <PossiblyUnusedReturnValue>
+      <code><![CDATA[null|ApiProblemListener|SendResponseListener|SendApiProblemResponseListener]]></code>
+    </PossiblyUnusedReturnValue>
     <UndefinedMethod>
-      <code><![CDATA[getMockForAbstractClass]]></code>
-      <code><![CDATA[returnCallback]]></code>
       <code><![CDATA[setSharedManager]]></code>
     </UndefinedMethod>
   </file>

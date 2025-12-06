@@ -38,13 +38,16 @@
         "laminas/laminas-eventmanager": "^3.12",
         "laminas/laminas-http": "^2.23",
         "laminas/laminas-mvc": "^3.7",
-        "laminas/laminas-view": "^2.32"
+        "laminas/laminas-stdlib": "^3.21",
+        "laminas/laminas-view": "^2.32",
+        "psr/container": "^1.1 || ^2"
     },
     "require-dev": {
         "laminas/laminas-coding-standard": "~3",
         "phpspec/prophecy-phpunit": "^2.0",
         "phpunit/phpunit": "^12",
         "psalm/plugin-phpunit": "^0.19",
+        "shipmonk/composer-dependency-analyser": "^1.8",
         "symfony/console": "^6 || ^7 || ^8",
         "symfony/filesystem": "^6 || ^7 || ^8",
         "symfony/string": "^6 || ^7 || ^8",

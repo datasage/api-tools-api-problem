@@ -36,8 +36,8 @@ class ModuleTest extends TestCase
         $application    = $this->getMockBuilder(Application::class)
             ->disableOriginalConstructor()
             ->getMock();
-        $serviceLocator = $this->getMockForAbstractClass(ServiceLocatorInterface::class);
-        $serviceLocator->method('get')->will($this->returnCallback([$this, 'serviceLocator']));
+        $serviceLocator = $this->createMock(ServiceLocatorInterface::class);
+        $serviceLocator->method('get')->willReturnCallback([$this, 'serviceLocator']);
 
         $eventManager = $this->marshalEventManager();
         $event        = $this->getMockBuilder(MvcEvent::class)->getMock();

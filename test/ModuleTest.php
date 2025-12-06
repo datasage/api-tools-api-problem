@@ -33,11 +33,9 @@ class ModuleTest extends TestCase
     {
         $module = new Module();
 
-        $application    = $this->getMockBuilder(Application::class)
-            ->disableOriginalConstructor()
-            ->getMock();
-        $serviceLocator = $this->getMockForAbstractClass(ServiceLocatorInterface::class);
-        $serviceLocator->method('get')->will($this->returnCallback([$this, 'serviceLocator']));
+        $application    = $this->createStub(Application::class);
+        $serviceLocator = $this->createStub(ServiceLocatorInterface::class);
+        $serviceLocator->method('get')->willReturnCallback([$this, 'serviceLocator']);
 
         $eventManager = $this->marshalEventManager();
         $event        = $this->getMockBuilder(MvcEvent::class)->getMock();
@@ -56,7 +54,7 @@ class ModuleTest extends TestCase
             case ApiProblemListener::class:
                 return new ApiProblemListener();
             case 'SendResponseListener':
-                $listener = $this->getMockBuilder(SendResponseListener::class)->getMock();
+                $listener = $this->createStub(SendResponseListener::class);
                 $listener->method('getEventManager')->willReturn(new EventManager());
 
                 return $listener;

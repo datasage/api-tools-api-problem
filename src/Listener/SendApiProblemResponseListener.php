@@ -8,13 +8,14 @@ use Laminas\ApiTools\ApiProblem\ApiProblemResponse;
 use Laminas\Http\Response as HttpResponse;
 use Laminas\Mvc\ResponseSender\HttpResponseSender;
 use Laminas\Mvc\ResponseSender\SendResponseEvent;
+use Override;
 
 /**
  * Send ApiProblem responses.
  */
 class SendApiProblemResponseListener extends HttpResponseSender
 {
-    /** @var HttpResponse; */
+    /** @var HttpResponse */
     protected $applicationResponse;
 
     /** @var bool */
@@ -61,6 +62,7 @@ class SendApiProblemResponseListener extends HttpResponseSender
      *
      * @return self
      */
+    #[Override]
     public function sendContent(SendResponseEvent $e)
     {
         $response = $e->getResponse();
@@ -80,6 +82,7 @@ class SendApiProblemResponseListener extends HttpResponseSender
      *
      * @return self
      */
+    #[Override]
     public function sendHeaders(SendResponseEvent $e)
     {
         $response = $e->getResponse();
@@ -99,6 +102,7 @@ class SendApiProblemResponseListener extends HttpResponseSender
      *
      * @return self
      */
+    #[Override]
     public function __invoke(SendResponseEvent $event)
     {
         $response = $event->getResponse();

@@ -10,6 +10,7 @@ use Laminas\EventManager\AbstractListenerAggregate;
 use Laminas\EventManager\EventManagerInterface;
 use Laminas\Mvc\MvcEvent;
 use Laminas\View\Exception\ExceptionInterface as ViewExceptionInterface;
+use Override;
 use Throwable;
 
 use function json_encode;
@@ -27,6 +28,7 @@ class RenderErrorListener extends AbstractListenerAggregate
     /**
      * {@inheritDoc}
      */
+    #[Override]
     public function attach(EventManagerInterface $events, $priority = 1)
     {
         $this->listeners[] = $events->attach(MvcEvent::EVENT_RENDER_ERROR, [$this, 'onRenderError'], 100);

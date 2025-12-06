@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Laminas\ApiTools\ApiProblem\Factory;
 
-use Interop\Container\ContainerInterface;
 use Laminas\ApiTools\ApiProblem\Listener\RenderErrorListener;
+use Psr\Container\ContainerInterface;
 
 class RenderErrorListenerFactory
 {

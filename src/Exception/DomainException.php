@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Laminas\ApiTools\ApiProblem\Exception;
 
+use Override;
+
 class DomainException extends \DomainException implements
     ExceptionInterface,
     ProblemExceptionInterface
@@ -18,7 +20,6 @@ class DomainException extends \DomainException implements
     protected $title;
 
     /**
-     * @param array $details
      * @return self
      */
     public function setAdditionalDetails(array $details)
@@ -50,6 +51,7 @@ class DomainException extends \DomainException implements
     /**
      * @return array
      */
+    #[Override]
     public function getAdditionalDetails()
     {
         return $this->details;
@@ -58,6 +60,7 @@ class DomainException extends \DomainException implements
     /**
      * @return string
      */
+    #[Override]
     public function getType()
     {
         return $this->type;
@@ -66,6 +69,7 @@ class DomainException extends \DomainException implements
     /**
      * @return string
      */
+    #[Override]
     public function getTitle()
     {
         return $this->title;

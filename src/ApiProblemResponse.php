@@ -6,6 +6,7 @@ namespace Laminas\ApiTools\ApiProblem;
 
 use Laminas\Http\Headers;
 use Laminas\Http\Response;
+use Override;
 
 use function json_encode;
 
@@ -54,6 +55,7 @@ class ApiProblemResponse extends Response
      *
      * @return string
      */
+    #[Override]
     public function getContent()
     {
         return json_encode($this->apiProblem->toArray(), $this->jsonFlags);
@@ -67,6 +69,7 @@ class ApiProblemResponse extends Response
      *
      * @return Headers
      */
+    #[Override]
     public function getHeaders()
     {
         $headers = parent::getHeaders();
@@ -85,6 +88,7 @@ class ApiProblemResponse extends Response
      *
      * @return string
      */
+    #[Override]
     public function getReasonPhrase()
     {
         if (! empty($this->reasonPhrase)) {

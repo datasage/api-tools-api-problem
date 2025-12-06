@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Laminas\ApiTools\ApiProblem\Factory;
 
-use Psr\Container\ContainerInterface;
 use Laminas\ApiTools\ApiProblem\Listener\ApiProblemListener;
+use Psr\Container\ContainerInterface;
 
 class ApiProblemListenerFactory
 {

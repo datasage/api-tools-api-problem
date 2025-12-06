@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Laminas\ApiTools\ApiProblem\Factory;
 
-use Psr\Container\ContainerInterface;
 use Laminas\ApiTools\ApiProblem\Listener\SendApiProblemResponseListener;
 use Laminas\Http\Response as HttpResponse;
+use Psr\Container\ContainerInterface;
 
 class SendApiProblemResponseListenerFactory
 {

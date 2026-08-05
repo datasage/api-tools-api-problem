@@ -138,8 +138,7 @@ class ApiProblemTest extends TestCase
         $apiProblem = new ApiProblem($status, 'foo');
         $r          = new ReflectionObject($apiProblem);
         $p          = $r->getProperty('problemStatusTitles');
-        $p->setAccessible(true);
-        $titles = $p->getValue($apiProblem);
+        $titles     = $p->getValue($apiProblem);
 
         $payload = $apiProblem->toArray();
         $this->assertArrayHasKey('title', $payload);

@@ -39,9 +39,6 @@ class ApiProblemTest extends TestCase
         $this->assertEquals($status, $payload['status']);
     }
 
-    /**
-     * @requires PHP 7.0
-     */
     public function testErrorAsDetails(): void
     {
         $error      = new TypeError('error message', 705);

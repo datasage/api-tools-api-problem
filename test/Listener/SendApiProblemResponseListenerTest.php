@@ -12,6 +12,7 @@ use Laminas\Http\Response as HttpResponse;
 use Laminas\Mvc\ResponseSender\ResponseSenderInterface;
 use Laminas\Mvc\ResponseSender\SendResponseEvent;
 use Override;
+use PHPUnit\Framework\Attributes\Depends;
 use PHPUnit\Framework\TestCase;
 
 use function count;
@@ -57,18 +58,14 @@ class SendApiProblemResponseListenerTest extends TestCase
         $this->assertFalse($this->listener->displayExceptions());
     }
 
-    /**
-     * @depends testDisplayExceptionsFlagIsFalseByDefault
-     */
+    #[Depends('testDisplayExceptionsFlagIsFalseByDefault')]
     public function testDisplayExceptionsFlagIsMutable(): void
     {
         $this->listener->setDisplayExceptions(true);
         $this->assertTrue($this->listener->displayExceptions());
     }
 
-    /**
-     * @depends testDisplayExceptionsFlagIsFalseByDefault
-     */
+    #[Depends('testDisplayExceptionsFlagIsFalseByDefault')]
     public function testSendContentDoesNotRenderExceptionsByDefault(): void
     {
         ob_start();

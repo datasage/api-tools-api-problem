@@ -64,9 +64,6 @@ class ApiProblemListenerTest extends TestCase
         $this->assertSame($event->getParam('exception'), $problem->detail);
     }
 
-    /**
-     * @requires PHP 7.0
-     */
     public function testOnDispatchErrorReturnsAnApiProblemResponseBasedOnCurrentEventThrowable(): void
     {
         $request = new Request();

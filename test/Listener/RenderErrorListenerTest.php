@@ -102,9 +102,6 @@ class RenderErrorListenerTest extends TestCase
         $this->assertEquals('exception', $details['message']);
     }
 
-    /**
-     * @requires PHP 7.0
-     */
     public function testOnRenderErrorCreatesAnApiProblemResponseFromThrowable(): void
     {
         $response = new Response();

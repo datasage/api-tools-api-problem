@@ -33,26 +33,26 @@
         }
     },
     "require": {
-        "php": "~8.2.0 || ~8.3.0 || ~8.4.0 || ~8.5.0",
         "ext-json": "*",
         "laminas/laminas-eventmanager": "^3.15",
         "laminas/laminas-http": "^2.23",
         "laminas/laminas-mvc": "^3.8",
         "laminas/laminas-stdlib": "^3.21",
         "laminas/laminas-view": "^2.43",
+        "php": "~8.2.0 || ~8.3.0 || ~8.4.0 || ~8.5.0",
         "psr/container": "^1.1 || ^2"
     },
     "require-dev": {
-        "laminas/laminas-coding-standard": "~3",
+        "laminas/laminas-coding-standard": "^3.1",
         "laminas/laminas-servicemanager": "^3.24",
         "phpspec/prophecy-phpunit": "^2.0",
-        "phpunit/phpunit": "^11.5 || ^12",
+        "phpunit/phpunit": "^11.0 || ^12.0 || ^13.0",
         "psalm/plugin-phpunit": "^0.19",
         "shipmonk/composer-dependency-analyser": "^1.8",
         "symfony/console": "^6 || ^7 || ^8",
         "symfony/filesystem": "^6 || ^7 || ^8",
         "symfony/string": "^6 || ^7 || ^8",
-        "vimeo/psalm": "^6"
+        "vimeo/psalm": "^6.14"
     },
     "autoload": {
         "psr-4": {

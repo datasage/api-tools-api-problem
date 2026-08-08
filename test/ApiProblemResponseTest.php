@@ -9,6 +9,7 @@ use Laminas\ApiTools\ApiProblem\ApiProblemResponse;
 use Laminas\ApiTools\ApiProblem\Exception\DomainException;
 use Laminas\Http\Header\ContentType;
 use Laminas\Http\Response;
+use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\TestCase;
 
 use function fopen;
@@ -78,9 +79,7 @@ class ApiProblemResponseTest extends TestCase
         $this->assertSame($apiProblem, $response->getApiProblem());
     }
 
-    /**
-     * @group 14
-     */
+    #[Group('14')]
     public function testOverridesReasonPhraseIfStatusCodeIsUnknown(): void
     {
         $response = new ApiProblemResponse(new ApiProblem(7, 'Random error'));
